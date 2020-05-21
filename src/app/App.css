@@ -1,0 +1,9 @@
+tbody.MuiTableBody-root > tr:hover {
+  background-color: #efefef;
+}
+tbody.MuiTableBody-root > :nth-of-type(2n) {
+  background-color: #fafafa;
+}
+.MuiTableSortLabel-icon {
+  display: none;
+}
