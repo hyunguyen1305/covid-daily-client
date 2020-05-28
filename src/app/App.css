@@ -7,3 +7,7 @@ tbody.MuiTableBody-root > :nth-of-type(2n) {
 .MuiTableSortLabel-icon {
   display: none;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}

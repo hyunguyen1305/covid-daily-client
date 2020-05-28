@@ -25,13 +25,13 @@ const TabUpdateNewsWrapper = styled.div`
   }
   .tab-body {
     padding: 0 1rem 1rem 1rem;
-    max-height: 50vh;
+    max-height: 70vh;
     overflow-y: scroll;
   }
   .tab-content {
     padding: 0.8rem 0;
     margin: 0.5rem 0;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #eeeeee;
 
     :hover {
       background: rgba(0, 0, 0, 0.05);
@@ -75,8 +75,8 @@ function TabUpdateNews({ data_news, updatedTime }) {
   };
   return (
     <TabUpdateNewsWrapper>
-      <h2>Update News</h2>
-      <small>{updatedTime}</small>
+      <h2 style={{ textAlign: "center", marginBottom: "0" }}>Daily News</h2>
+
       <Paper style={{ marginTop: "1rem" }}>
         <Tabs
           value={value}
@@ -112,10 +112,9 @@ function TabUpdateNews({ data_news, updatedTime }) {
                             <strong>{ele.nation}</strong>:
                             <span>
                               {" "}
-                              has{" "}
                               {ele.newCases && (
                                 <span style={{ color: "#8080FF" }}>
-                                  {ele.newCases} New Cases
+                                  <strong>{ele.newCases}</strong> New Cases
                                 </span>
                               )}{" "}
                               {ele.newCases && ele.deathCase && (
@@ -123,14 +122,23 @@ function TabUpdateNews({ data_news, updatedTime }) {
                               )}
                               {ele.deathCase && (
                                 <span style={{ color: "#ea5455" }}>
-                                  {ele.deathCase} Death Cases
+                                  <strong>{ele.deathCase}</strong> Death Cases
                                 </span>
                               )}
                             </span>
                           </Box>
-                          <div style={{ marginTop: "0.3rem" }}>
+                          <div style={{ marginTop: "0.5rem" }}>
                             {ele.sourceList.map((ele, i) => {
-                              return <a href={ele}>[Source] </a>;
+                              return (
+                                <a
+                                  href={ele}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  style={{ marginRight: "5px", color: "blue" }}
+                                >
+                                  [Source]
+                                </a>
+                              );
                             })}
                           </div>
                         </div>

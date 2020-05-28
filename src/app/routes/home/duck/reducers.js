@@ -23,7 +23,7 @@ const homeReducer = (state = INITIAL_STATE, action) => {
     }
     case types.START_GET_DATA_NEWS: {
       const date = new Date();
-      const expTime = date.setTime(date.getTime() + 360 * 360 * 1000);
+      const expTime = date.setTime(date.getTime() + 60 * 60 * 1000);
       localStorage.setItem("expTime", JSON.stringify(expTime));
       return {
         ...state,

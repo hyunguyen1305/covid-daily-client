@@ -1,27 +1,36 @@
 import React from "react";
-import Swal from "sweetalert2";
+import RingLoader from "react-spinners/RingLoader";
 
 function SpinnerComponent({ loading, success, fail }) {
-  const renderSpiner = (loading, success, fail) => {
-    if (loading) {
-      Swal.fire({
-        titleText: "Loading ...",
-        onOpen: () => {
-          Swal.showLoading();
-        },
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-      });
-    } else {
-      Swal.fire({
-        titleText: "Done!",
-        icon: "success",
-        timer: 500,
-        showConfirmButton: false,
-      });
-    }
-  };
-  return <div>{renderSpiner(loading, success, fail)}</div>;
+  return (
+    <div
+      className="sweet-loading"
+      style={{
+        position: "fixed",
+        top: 0,
+        bottom: 0,
+        right: 0,
+        left: 0,
+        background: "white",
+        zIndex: "9999",
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+          flexDirection: "column",
+        }}
+      >
+        <RingLoader size={150} color={"#5fdde5"} loading={true} />
+        <div style={{ fontSize: "2rem" }}>Getting data. Please wait...</div>
+      </div>
+    </div>
+  );
 }
 
 export default SpinnerComponent;

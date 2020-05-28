@@ -7,9 +7,40 @@ import "./App.css";
 
 function App() {
   return (
-    <Router>
-      <Route exact path="/" component={HomePageContainer} />
-    </Router>
+    <main>
+      <Router>
+        <Route exact path="/" component={HomePageContainer} />
+      </Router>
+      <footer
+        style={{
+          margin: "2rem 0 0 0 ",
+          backgroundColor: "#3f3f44",
+          textAlign: "center",
+          padding: "2rem",
+          color: "white",
+          fontSize: "1.5rem",
+        }}
+      >
+        <p>
+          Special thanks:{" "}
+          <a
+            href="https://www.worldometers.info/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            https://www.worldometers.info
+          </a>{" "}
+          for all the data.
+        </p>
+        <div>
+          This page all purpose for My demo Web Crawler. If you would like to
+          complain or remove anything please contact via Email:{" "}
+          <span>
+            <a href="_blank">huy.nguyenngoc1305@gmail.com</a>
+          </span>
+        </div>
+      </footer>
+    </main>
   );
 }
 

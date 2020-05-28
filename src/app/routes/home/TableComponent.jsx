@@ -18,13 +18,26 @@ export default function TableComponent({ data_table, updatedTime }) {
           zIndex: 9,
           borderRight: "1px solid #eeeeee",
           backgroundColor: "white",
-          width: "auto",
+          minWidth: "160px",
         },
         render: (rowData) => {
           return (
             <strong>
-              <Flag code={rowData.nationCode} height="14" />{" "}
-              {rowData.nationName}
+              {rowData.nationCode === "WORLD" ? (
+                <div>
+                  <img
+                    src="https://www.downloadclipart.net/svg/22466-map-black-world-svg.svg"
+                    alt="world"
+                    height="16"
+                  />
+                  {rowData.nationName}
+                </div>
+              ) : (
+                <div>
+                  <Flag code={rowData.nationCode} height="14" />{" "}
+                  {rowData.nationName}
+                </div>
+              )}
             </strong>
           );
         },
@@ -35,7 +48,11 @@ export default function TableComponent({ data_table, updatedTime }) {
         type: "numeric",
         cellStyle: { borderRight: "1px solid #eeeeee", whiteSpace: "nowrap" },
         render: (rowData) => {
-          return <strong>{numberWithCommas(rowData.totalCases)}</strong>;
+          return (
+            <strong style={{ color: "blue" }}>
+              {numberWithCommas(rowData.totalCases)}
+            </strong>
+          );
         },
       },
       {
@@ -83,7 +100,11 @@ export default function TableComponent({ data_table, updatedTime }) {
         cellStyle: { borderRight: "1px solid #eeeeee", whiteSpace: "nowrap" },
         render: (rowData) => {
           if (rowData.totalDeaths) {
-            return <strong>{numberWithCommas(rowData.totalDeaths)}</strong>;
+            return (
+              <strong style={{ color: "red" }}>
+                {numberWithCommas(rowData.totalDeaths)}
+              </strong>
+            );
           }
         },
       },
@@ -143,7 +164,7 @@ export default function TableComponent({ data_table, updatedTime }) {
         render: (rowData) => {
           if (rowData.remainingCases) {
             return (
-              <div style={{ color: "blue" }}>
+              <div style={{ color: "#fe8a71" }}>
                 {numberWithCommas(rowData.remainingCases)}
               </div>
             );
@@ -156,7 +177,7 @@ export default function TableComponent({ data_table, updatedTime }) {
 
   return (
     <div>
-      <h2>Report Covid-19 Cases</h2>
+      <h2 style={{ textAlign: "center" }}>Report Covid-19 Cases</h2>
       <MaterialTable
         title={<small style={{ wordBreak: "break-word" }}>{updatedTime}</small>}
         columns={state.columns}
@@ -166,13 +187,13 @@ export default function TableComponent({ data_table, updatedTime }) {
           headerStyle: {
             position: "sticky",
             top: 0,
-            backgroundColor: "gray",
+            backgroundColor: "#222831",
             borderRight: "1px #eeeeee solid",
             borderLeft: "1px #eeeeee solid",
             color: "white",
           },
-          maxBodyHeight: "60vh",
-          minBodyHeight: "60vh",
+          maxBodyHeight: "80vh",
+          minBodyHeight: "80vh",
         }}
       />
     </div>
